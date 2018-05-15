@@ -1,0 +1,130 @@
+﻿@model FinalProject.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Your profile</h2>
+
+<table class="borderless">
+    <tfoot><tr><td>Edit</td></tr></tfoot>
+    <tbody>
+        <tr>
+            <td width="40%">
+                <img src="@Url.Action("GetProfileImage", "UserProfile", null)" alt="Person Image" />
+            </td>
+            <td width="30%">
+                <table class="table table-responsive">
+                    <tbody>
+                        <tr>
+                            <th colspan="2">
+                                @Html.DisplayFor(modelItem => Model.FirstName) @Html.DisplayFor(modelItem => Model.LastName)
+                            </th>
+
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DateOfBirth)
+                            </th>
+                            <td>
+                                @Html.DisplayNameFor(model => Model.DateOfBirth)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ProfileImage)
+                            </th>
+                            <td>
+                                @Html.DisplayNameFor(model => Model.ProfileImage)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Gender)
+                            </th>
+                            <td>
+                                @Html.DisplayNameFor(model => Model.Gender)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+                            <td>
+                                @Html.DisplayNameFor(model => Model.Email)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EmailConfirmed)
+                            </th>
+                            <td>
+                                @Html.DisplayNameFor(model => Model.EmailConfirmed)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PhoneNumber)
+                            </th>
+                            <td>
+                                @Html.DisplayNameFor(model => Model.PhoneNumber)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+                            </th>
+                            <td>
+                                @Html.DisplayNameFor(model => Model.PhoneNumberConfirmed)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+                            </th>
+                            <td>
+                                @Html.DisplayNameFor(model => Model.PhoneNumberConfirmed)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UserName)
+                            </th>
+                            <td>
+                                @Html.DisplayNameFor(model => Model.UserName)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    @using (Html.BeginForm("AddNewPost", "UserProfile", FormMethod.Post))
+    {
+        <p>Share your thoughts with friends:</p>
+        @Html.TextArea("text", "")
+        <br>
+        <button type="submit" value="Share">Share</button>
+    }
+
+    @if (Model.UserPosts == null)
+    {
+        <p>No posts yet.</p>
+    }
+    else
+    {
+        foreach (var post in Model.UserPosts)
+        {
+            <div>
+                <p>@post.PostDate</p>
+                <p>@post.Text</p>
+            </div>
+        }
+    }
+
+</div>
+

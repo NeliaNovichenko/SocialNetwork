@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FinalProject.Models;
 
 namespace FinalProject.Controllers
 {
@@ -10,6 +11,7 @@ namespace FinalProject.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
 
