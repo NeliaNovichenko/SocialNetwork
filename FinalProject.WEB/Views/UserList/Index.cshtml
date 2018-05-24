@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNet.Identity
+@model List<FinalProject.WEB.Models.UserProfileViewModel>
+@{
+    ViewBag.Title = "User list";
+}
+
+<h2>User list</h2>
+
+@if (Model == null || Model.Count == 0)
+{
+    <div class="jumbotron">
+        <p>No users were found.</p>
+    </div>
+}
+else
+{
+    foreach (var profile in Model)
+    {
+        if (profile.Id == User.Identity.GetUserId())
+        {
+            continue;
+        }
+        <div class="jumbotron">
+            <table>
+                <tr>
+                    <td width="30%">
+                        <div style="margin: 10px;">
+                            <img src="@Url.Action("GetProfileImage", "UserProfile", profile.ProfileImage, null)" alt="Person Image" />
+                        </div>
+                    </td>
+                    <td width="70%">
+                        <h2>@profile.FirstName @profile.LastName</h2>
+                        <p>@profile.DateOfBirth</p>
+                        <p>@profile.PhoneNumber</p>
+                        <p>@Html.ActionLink("Show Profile", "ShowProfile", "UserProfile", profile, null)</p>
+                        <p>@Html.ActionLink("Start chat", "StartChat", "Chat", new { u1 = User.Identity.GetUserId(), u2 = profile.Id}, null)</p>
+                    </td>
+                </tr>
+                <tr></tr>
+            </table>
+
+        </div>
+    }
+}
+

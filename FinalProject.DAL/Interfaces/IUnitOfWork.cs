@@ -13,7 +13,7 @@ namespace FinalProject.DAL.Interfaces
         ApplicationUserManager UserManager { get; }
         ApplicationRoleManager RoleManager { get; }
         IRepository<ClientProfile> ClientProfiles { get; }
-        IRepository<Post> Posts { get; }
+        IRepository<Chat> Chats { get; }
         void Save();
         Task SaveAsync();
 

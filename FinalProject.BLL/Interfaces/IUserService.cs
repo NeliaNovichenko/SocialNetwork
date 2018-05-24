@@ -9,13 +9,17 @@ using FinalProject.BLL.Infrastructure;
 
 namespace FinalProject.BLL.Interfaces
 {
-    //Через объекты данного интерфейса уровень представления будет взаимодействовать с уровнем доступа к данным. 
-    //Здесь определены только три метода: Create (создание пользователей), Authenticate (аутентификация пользователей)
-    //и SetInitialData (установка начальных данных в БД - админа и списка ролей).
     public interface IUserService : IDisposable
     {
-        Task<OperationDetails> Create(ApplicationUserDTO userDto);
-        Task<ClaimsIdentity> Authenticate(ApplicationUserDTO userDto);
-        Task SetInitialData(ApplicationUserDTO adminDto, List<string> roles);
+        Task<OperationDetails> Create(RegistrationModelDto userDto);
+        Task<ClaimsIdentity> Authenticate(RegistrationModelDto userDto);
+        Task SetInitialData(RegistrationModelDto adminDto, List<string> roles);
+        UserDto GetUser(string userId);
+        List<UserDto> GetAllUsers();
+        void UpdateUser(UserDto userDto);
+        void AddPost(PostDto postDto);
+        //ChatDto GetOrCreateChat(string u1Id, string u2Id);
+        //void UpdateChat(ChatDto chatDto);
+        //void CreateChat(ChatDto chatDto);
     }
 }

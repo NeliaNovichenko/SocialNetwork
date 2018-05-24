@@ -1,0 +1,104 @@
+﻿@using Microsoft.AspNet.Identity
+@model FinalProject.WEB.Models.UserProfileViewModel
+
+@{
+    ViewBag.Title = "Your profile";
+}
+
+<h2>Your profile</h2>
+
+<table class="borderless" style="margin: 20px;">
+    <tr>
+        <td width="30%">
+            <img src="@Url.Action("GetProfileImage", "UserProfile", Model.ProfileImage)" alt="Person Image" class="img-rounded" />
+        </td>
+        <td width="70%" style="vertical-align: top">
+            <table width="40%" class="table table-responsive align-top" style="margin-left: 20px;">
+                <tr>
+                    <th colspan="2" class="jumbotron">
+                        <p class="text-left">@Model.FirstName @Model.LastName</p>
+                    </th>
+
+                </tr>
+                <tr class="jumbotron">
+                    <td>
+                        <p class="text-left">@Html.DisplayNameFor(model => Model.DateOfBirth)</p>
+                    </td>
+                    <td>
+                        <p class="text-left">@Html.DisplayFor(model => Model.DateOfBirth)</p>
+                    </td>
+                </tr>
+                <tr class="jumbotron">
+
+                    <td>
+                        <p class="text-left">@Html.DisplayNameFor(model => Model.Gender)</p>
+                    </td>
+                    <td>
+                        <p class="text-left">@Html.DisplayFor(model => Model.Gender)</p>
+                    </td>
+                </tr>
+                <tr class="jumbotron">
+                    <td>
+                        <p class="text-left">@Html.DisplayNameFor(model => Model.PhoneNumber)</p>
+                    </td>
+                    <td>
+                        <p class="text-left">@Html.DisplayFor(model => Model.PhoneNumber)</p>
+                    </td>
+                </tr>
+                <tr class="jumbotron">
+                    <td>
+                        <p class="text-left">@Html.DisplayNameFor(model => Model.Friends)</p>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Friend list", "ShowUsers", "UserList", Model.Friends, new { style = "text-transform:capitalize;" })
+                    </td>
+                </tr>
+                <tr class="jumbotron">
+                    <td colspan="2">
+                        @if (Model.Id == User.Identity.GetUserId())
+                        {
+                            @Html.ActionLink("Edit Profile", "EditUserProfile", "UserProfile", Model, new {style = "text-transform:capitalize;"})
+                        }
+                        else
+                        {
+                           
+                            <p>@Html.ActionLink("Subscribe", "Subscribe", "UserProfile", Model, null)</p> 
+                        }
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<div align="center">
+    @using (Html.BeginForm("AddNewPost", "UserProfile", FormMethod.Post))
+    {
+
+        <div class="jumbotron text-left">
+            <p>Share your thoughts with friends:</p>
+            <textarea class="form-control " name="text" aria-valuetext="" style="min-width: 100%" rows="5"></textarea>
+            <button class="btn-sm" type="submit" value="Share">Share</button>
+        </div>
+    }
+
+    @if (Model.UserPosts == null)
+    {
+        <div class="jumbotron">
+            <p class="text-left">No posts yet.</p>
+        </div>
+    }
+    else
+    {
+        foreach (var post in Model.UserPosts)
+        {
+            <div class="jumbotron">
+                <p class="text-left">Date: @post.PostDate.ToShortDateString()</p>
+                <p class="text-left">@Model.FirstName: @post.Text</p>
+            </div>
+        }
+    }
+
+</div>
+
+

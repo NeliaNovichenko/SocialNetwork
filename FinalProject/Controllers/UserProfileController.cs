@@ -19,33 +19,34 @@ namespace FinalProject.Controllers
         /// <summary>
         /// Application DB context
         /// </summary>
-        protected ApplicationDbContext ApplicationDbContext { get; set; }
+        //protected ApplicationDbContext ApplicationDbContext { get; set; }
 
         /// <summary>
         /// User manager - attached to application DB context
         /// </summary>
-        protected UserManager<ApplicationUser> UserManager { get; set; }
+        //protected UserManager<ApplicationUser> UserManager { get; set; }
 
         public UserProfileController()
         {
-            this.ApplicationDbContext = new ApplicationDbContext();
-            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+            //this.ApplicationDbContext = new ApplicationDbContext();
+            //this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
         }
 
         // GET: UserProfile
         public ActionResult Index()
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            return View(user);
+            //var user = UserManager.FindById(User.Identity.GetUserId());
+            //return View(user);
+            return View();
         }
 
         // To convert the Byte Array to the author Image
         public FileContentResult GetProfileImage()
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
+            //var user = UserManager.FindById(User.Identity.GetUserId());
             byte[] byteArray = new byte[0];
-            if (user.ProfileImage is null || user.ProfileImage.Length == 0)
-            {
+            //if (user.ProfileImage is null || user.ProfileImage.Length == 0)
+            //{
                 String fileName = "~/Content/Images/defaultProfileImage.jpg";
                 fileName = Server.MapPath(fileName);
                 if (System.IO.File.Exists(fileName))
@@ -59,9 +60,9 @@ namespace FinalProject.Controllers
                         byteArray = stream.ToArray();
                     }
                 }
-            }
-            else
-                byteArray = user.ProfileImage;
+            //}
+            //else
+            //    byteArray = user.ProfileImage;
 
             ////Convert byte arry to base64string   
             //string imreBase64Data = Convert.ToBase64String(byteArray);
@@ -79,32 +80,34 @@ namespace FinalProject.Controllers
         [HttpPost]
         public ActionResult AddNewPost(string text)
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            using (var context = ApplicationDbContext.Create())
-            {
-                Repository<ApplicationUser> userRepo = new Repository<ApplicationUser>(ApplicationDbContext);
-                Repository<Post> postsRepo = new Repository<Post>(ApplicationDbContext);
-           
-                Post post = new Post
-                {
-                    //ApplicationUserId = user.Id,
-                    //ApplicationUser = user,
-                    PostDate = DateTime.Now,
-                    Text = text
-                };
+            //var user = UserManager.FindById(User.Identity.GetUserId());
+            //using (var context = ApplicationDbContext.Create())
+            //{
+            //    Repository<ApplicationUser> userRepo = new Repository<ApplicationUser>(ApplicationDbContext);
+            //    Repository<Post> postsRepo = new Repository<Post>(ApplicationDbContext);
 
-                user.UserPosts.Add(post);
+            //    Post post = new Post
+            //    {
+            //        //ApplicationUserId = user.Id,
+            //        //ApplicationUser = user,
+            //        PostDate = DateTime.Now,
+            //        Text = text
+            //    };
 
-                postsRepo.Update(post);
-                userRepo.Update(user);
-            }
-            return View("Index", user);
+            //    user.UserPosts.Add(post);
+
+            //    postsRepo.Update(post);
+            //    userRepo.Update(user);
+            //}
+            //return View("Index", user);
+            return View("Index");
         }
 
         public ActionResult EditUserInfoPage()
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
-            return View(user);
+            //var user = UserManager.FindById(User.Identity.GetUserId());
+            //return View(user);
+            return View();
         }
     }
 }

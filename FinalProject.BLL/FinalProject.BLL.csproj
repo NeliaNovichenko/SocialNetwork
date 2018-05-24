@@ -57,9 +57,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\ApplicationUserDTO.cs" />
-    <Compile Include="DTO\PostDTO.cs" />
+    <Compile Include="DTO\ChatDto.cs" />
+    <Compile Include="DTO\MessageDto.cs" />
+    <Compile Include="DTO\RegistrationModelDto.cs" />
+    <Compile Include="DTO\UserDto.cs" />
+    <Compile Include="DTO\PostDto.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
+    <Compile Include="Infrastructure\ValidationException.cs" />
     <Compile Include="Interfaces\IServiceCreator.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

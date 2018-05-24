@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace FinalProject.BLL.DTO
 {
-    public class PostDTO
+    public class PostDto
     {
         public int PostId { get; set; }
 
         public string Text { get; set; }
         
         public DateTime PostDate { get; set; }
+
+        public string ApplicationUserId { get; set; }
     }
 }

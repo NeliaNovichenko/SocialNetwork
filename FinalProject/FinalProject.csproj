@@ -189,32 +189,15 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ApplicationUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201805080833598_InitialCreate.cs" />
-    <Compile Include="Migrations\201805080833598_InitialCreate.Designer.cs">
-      <DependentUpon>201805080833598_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805080848319_ApplicationUserFKForPostMigration.cs" />
-    <Compile Include="Migrations\201805080848319_ApplicationUserFKForPostMigration.Designer.cs">
-      <DependentUpon>201805080848319_ApplicationUserFKForPostMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805080909204_RemoveApplicationUserFKForPostMigration.cs" />
-    <Compile Include="Migrations\201805080909204_RemoveApplicationUserFKForPostMigration.Designer.cs">
-      <DependentUpon>201805080909204_RemoveApplicationUserFKForPostMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -301,17 +284,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805080833598_InitialCreate.resx">
-      <DependentUpon>201805080833598_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805080848319_ApplicationUserFKForPostMigration.resx">
-      <DependentUpon>201805080848319_ApplicationUserFKForPostMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805080909204_RemoveApplicationUserFKForPostMigration.resx">
-      <DependentUpon>201805080909204_RemoveApplicationUserFKForPostMigration.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FinalProject.BLL\FinalProject.BLL.csproj">

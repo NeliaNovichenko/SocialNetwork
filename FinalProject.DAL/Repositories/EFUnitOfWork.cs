@@ -16,8 +16,11 @@ namespace FinalProject.DAL.Repositories
         private SnContext db;
         private ApplicationUserManager userManager;
         private ApplicationRoleManager roleManager;
-        private GenericRepository<ClientProfile> clientProfileRepository;
-        private GenericRepository<Post> postRepository;
+        //private GenericRepository<ClientProfile> clientProfileRepository;
+        private ClientProfileRepository clientProfileRepository;
+        //private GenericRepository<Post> postRepository;
+        private GenericRepository<Chat> chatRepository;
+        //private GenericRepository<Message> messageRepository;
 
         public EFUnitOfWork(string connectionString)
         {
@@ -29,9 +32,10 @@ namespace FinalProject.DAL.Repositories
         public ApplicationRoleManager RoleManager => roleManager ?? (roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(db)));
 
         public IRepository<ClientProfile> ClientProfiles => clientProfileRepository ?? (clientProfileRepository =
-                                                                    new GenericRepository<ClientProfile>(db));
-    
-        public IRepository<Post> Posts => postRepository ?? (postRepository = new GenericRepository<Post>(db));
+                                                                    new ClientProfileRepository(db));
+
+        //public IRepository<Post> Posts => postRepository ?? (postRepository = new GenericRepository<Post>(db));
+        public IRepository<Chat> Chats => chatRepository ?? (chatRepository = new GenericRepository<Chat>(db));
 
         public void Save()
         {

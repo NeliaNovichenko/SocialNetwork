@@ -19,10 +19,12 @@ namespace FinalProject.DAL.Entities
         [Key]
         [ForeignKey("ApplicationUser")]
         public string Id { get; set; }
-
+        
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public string PhoneNumber { get; set; }
 
         public DateTime? DateOfBirth { get; set; }
 
@@ -34,6 +36,8 @@ namespace FinalProject.DAL.Entities
 
         public List<Post> UserPosts { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
+        public List<Chat> Chats { get; set; }
+
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

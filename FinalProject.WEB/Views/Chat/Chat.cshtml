@@ -1,0 +1,21 @@
+﻿@model FinalProject.WEB.Models.ChatViewModel
+
+<div id="MessageHistory">
+    @{
+        Html.RenderPartial("History", Model);
+    }
+</div>
+
+@Ajax.ActionLink("ActionLink", "OpenChat", new { u1 = Model.ChatUsers[0], u2 = Model.ChatUsers[1], chat = Model },
+    new AjaxOptions { UpdateTargetId = "RefreshArea" },
+    new { @id = "ActionLink", @style = "visibility:hidden;" })
+
+
+@Ajax.BeginForm("SentMassage", "Chat", FormMethod.Post, new AjaxOptions { UpdateTargetId = "MessageHistory" })
+{
+<div class="jumbotron text-left">
+    <p>Share your thoughts with friends:</p>
+    <textarea class="form-control " name="text" aria-valuetext="" style="min-width: 100%" rows="2"></textarea>
+    <button class="btn-sm" type="submit" value="Share">Share</button>
+</div>
+}
