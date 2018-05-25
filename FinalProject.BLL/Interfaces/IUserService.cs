@@ -14,12 +14,11 @@ namespace FinalProject.BLL.Interfaces
         Task<OperationDetails> Create(RegistrationModelDto userDto);
         Task<ClaimsIdentity> Authenticate(RegistrationModelDto userDto);
         Task SetInitialData(RegistrationModelDto adminDto, List<string> roles);
-        UserDto GetUser(string userId);
-        List<UserDto> GetAllUsers();
-        void UpdateUser(UserDto userDto);
+        ClientProfileDto GetUser(string userId);
+        List<ClientProfileDto> GetAllUsers();
+        void UpdateUser(ClientProfileDto clientProfileDto);
         void AddPost(PostDto postDto);
-        //ChatDto GetOrCreateChat(string u1Id, string u2Id);
-        //void UpdateChat(ChatDto chatDto);
-        //void CreateChat(ChatDto chatDto);
+        void AddMessage(MessageDto messageDto);
+        List<MessageDto> GetMessages(string u1Id, string u2Id);
     }
 }

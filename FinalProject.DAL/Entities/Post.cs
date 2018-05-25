@@ -15,12 +15,9 @@ namespace FinalProject.DAL.Entities
 
         public string Text { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime? PostDate { get; set; }
 
-        //public string ApplicationUserId { get; set; }
-
-        //[ForeignKey("ApplicationUserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

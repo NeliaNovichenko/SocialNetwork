@@ -14,11 +14,10 @@ namespace FinalProject.WEB
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<UserDto, UserProfileViewModel>();
-                cfg.CreateMap<UserProfileViewModel, UserDto>();
-                cfg.CreateMap<ChatViewModel, ChatDto>();
-                cfg.CreateMap<ChatDto, ChatViewModel>();
-                cfg.CreateMap<UserDto, ChatUserViewModel>();
+                cfg.CreateMap<ClientProfileDto, UserProfileViewModel>();
+                cfg.CreateMap<UserProfileViewModel, ClientProfileDto>();
+                cfg.CreateMap<MessageDto, MessageViewModel>();
+
             });
         }
     }

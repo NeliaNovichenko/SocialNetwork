@@ -13,16 +13,8 @@ namespace FinalProject.DAL.Interfaces
         ApplicationUserManager UserManager { get; }
         ApplicationRoleManager RoleManager { get; }
         IRepository<ClientProfile> ClientProfiles { get; }
-        IRepository<Chat> Chats { get; }
+        IRepository<Message> Messages { get; }
         void Save();
         Task SaveAsync();
-
-        //https://metanit.com/sharp/mvc5/23.10.php
-        //ApplicationUserManager UserManager { get; }
-        //IClientManager ClientManager { get; }
-        //ApplicationRoleManager RoleManager { get; }
-        //Task SaveAsync();
-
-
     }
 }

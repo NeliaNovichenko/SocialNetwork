@@ -9,12 +9,10 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace FinalProject.DAL.EF
 {
-    //наследуется от класса IdentityDbContext и поэтому уже имеет свойства Users и Roles
     public class SnContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Post> Posts { get; set; }
         public DbSet<ClientProfile> ClientProfiles { get; set; }
-        public DbSet<Chat> Chats { get; set; }
         public DbSet<Message> Messages { get; set; }
 
         public SnContext(string connectionString)
@@ -26,11 +24,4 @@ namespace FinalProject.DAL.EF
 
     }
 
-    public class SnDbInitializer : DropCreateDatabaseIfModelChanges<SnContext>
-    {
-        protected override void Seed(SnContext db)
-        {
-            db.SaveChanges();
-        }
-    }
 }

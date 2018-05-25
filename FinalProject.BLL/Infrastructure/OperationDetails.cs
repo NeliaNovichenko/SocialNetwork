@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace FinalProject.BLL.Infrastructure
 {
-    //Данный класс будет хранить информацию об успешности операции.
     public class OperationDetails
     {
         public OperationDetails(bool succedeed, string message, string prop)

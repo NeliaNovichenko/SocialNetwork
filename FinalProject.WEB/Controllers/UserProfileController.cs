@@ -24,7 +24,7 @@ namespace FinalProject.WEB.Controllers
         public ActionResult Index()
         {
             var userDTO = userService.GetUser(User.Identity.GetUserId());
-            var profile = Mapper.Map<UserDto, UserProfileViewModel>(userDTO);
+            var profile = Mapper.Map<ClientProfileDto, UserProfileViewModel>(userDTO);
 
             if (profile == null)
                 return RedirectToAction("Login", "Account");
@@ -83,7 +83,7 @@ namespace FinalProject.WEB.Controllers
         public ActionResult EditUserProfile()
         {
             var userDTO = userService.GetUser(User.Identity.GetUserId());
-            var profile = Mapper.Map<UserDto, UserProfileViewModel>(userDTO);
+            var profile = Mapper.Map<ClientProfileDto, UserProfileViewModel>(userDTO);
 
             return View(profile);
         }
@@ -94,7 +94,7 @@ namespace FinalProject.WEB.Controllers
         {
             if (ModelState.IsValid)
             {
-                var userDto = Mapper.Map<UserProfileViewModel, UserDto>(profile);
+                var userDto = Mapper.Map<UserProfileViewModel, ClientProfileDto>(profile);
                 userService.UpdateUser(userDto);
             }
 
@@ -105,7 +105,7 @@ namespace FinalProject.WEB.Controllers
         public ActionResult Subscribe(UserProfileViewModel followed)
         {
             var userDTO = userService.GetUser(User.Identity.GetUserId());
-            var followedDto = Mapper.Map<UserProfileViewModel, UserDto>(followed);
+            var followedDto = Mapper.Map<UserProfileViewModel, ClientProfileDto>(followed);
             userDTO.Friends.Add(followedDto);
             userService.UpdateUser(userDTO);
 

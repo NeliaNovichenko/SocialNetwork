@@ -1,4 +1,4 @@
-﻿@model FinalProject.WEB.Models.ChatViewModel
+﻿@model List<FinalProject.WEB.Models.MessageViewModel>
 
 <div id="MessageHistory">
     @{
@@ -6,7 +6,7 @@
     }
 </div>
 
-@Ajax.ActionLink("ActionLink", "OpenChat", new { u1 = Model.ChatUsers[0], u2 = Model.ChatUsers[1], chat = Model },
+@Ajax.ActionLink("ActionLink", "OpenChat", new { u1 = Model.ChatUsers[0], u2 = Model.ChatUsers[1] },
     new AjaxOptions { UpdateTargetId = "RefreshArea" },
     new { @id = "ActionLink", @style = "visibility:hidden;" })
 

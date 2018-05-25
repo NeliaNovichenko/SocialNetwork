@@ -59,20 +59,10 @@
     <Compile Include="Entities\ClientProfile.cs" />
     <Compile Include="Entities\Message.cs" />
     <Compile Include="Entities\Post.cs" />
-    <Compile Include="Entities\Chat.cs" />
     <Compile Include="Identity\ApplicationRoleManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\201805230715597_InitialCreate.cs" />
-    <Compile Include="Migrations\201805230715597_InitialCreate.Designer.cs">
-      <DependentUpon>201805230715597_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805231004313_Change chat model.cs" />
-    <Compile Include="Migrations\201805231004313_Change chat model.Designer.cs">
-      <DependentUpon>201805231004313_Change chat model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClientProfileRepository.cs" />
     <Compile Include="Repositories\EFUnitOfWork.cs" />
@@ -81,14 +71,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201805230715597_InitialCreate.resx">
-      <DependentUpon>201805230715597_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805231004313_Change chat model.resx">
-      <DependentUpon>201805231004313_Change chat model.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

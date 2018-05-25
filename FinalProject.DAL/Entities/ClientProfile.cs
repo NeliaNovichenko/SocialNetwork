@@ -36,7 +36,7 @@ namespace FinalProject.DAL.Entities
 
         public List<Post> UserPosts { get; set; }
 
-        public List<Chat> Chats { get; set; }
+        public List<Message> Messages { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
     }

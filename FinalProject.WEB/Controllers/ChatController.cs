@@ -16,70 +16,46 @@ namespace FinalProject.WEB.Controllers
     {
         private IUserService userService => HttpContext.GetOwinContext().GetUserManager<IUserService>();
 
-        public ActionResult StartChat(string u1, string u2)
+        public ActionResult OpenChat(string u1, string u2)
         {
-            ChatViewModel chat = new ChatViewModel();
-
-            chat = new ChatViewModel();
             var user1Dto = userService.GetUser(u1);
-            var user1 = new ChatUserViewModel()
-            {
-                FirstName = user1Dto.FirstName,
-                LastName = user1Dto.LastName,
-                Id = user1Dto.Id
-            };
-            chat.ChatUsers.Add(user1);
-
             var user2Dto = userService.GetUser(u2);
-            var user2 = new ChatUserViewModel()
+
+            var messagesDto = userService.GetMessages(u1, u2).ToList();
+            var messagesViewModel = Mapper.Map<IEnumerable<MessageDto>, IEnumerable<MessageViewModel>>(messagesDto).ToList();
+
+            ChatViewModel chat = new ChatViewModel()
             {
-                FirstName = user2Dto.FirstName,
-                LastName = user2Dto.LastName,
-                Id = user2Dto.Id
+                Users = new List<UserProfileViewModel>(),
+                Messages = messagesViewModel
             };
-            chat.ChatUsers.Add(user2);
-
-            return View("Chat", chat);
-        }
-
-        public ActionResult OpenChat(ChatUserViewModel u1, ChatUserViewModel u2, ChatViewModel chat = null)
-        {
-            if (chat == null)
-            {
-                chat = new ChatViewModel();
-                chat.ChatUsers.Add(u1);
-                chat.ChatUsers.Add(u2);
-
-            }
-
-            return View("Chat", chat);
+            
+            return View("Chat", messagesViewModel.ToList());
         }
 
 
         [HttpPost]
-        public ActionResult SentMassage(ChatViewModel chatViewModel, string text)
+        public ActionResult SentMassage(string u1, string u2, string text)
         {
-            //ChatDto chatDto = Mapper.Map<ChatViewModel, ChatDto>(chatViewModel);
-            var userDTO = userService.GetUser(User.Identity.GetUserId());
+            var user1Dto = userService.GetUser(u1);
+            var user2Dto = userService.GetUser(u2);
 
-            ChatMessageViewModel message = new ChatMessageViewModel()
+            var users = new List<ClientProfileDto>();
+            users.Add(user1Dto);
+            users.Add(user2Dto);
+
+            MessageDto message = new MessageDto()
             {
-                User = new ChatUserViewModel()
-                {
-                    Id = userDTO.Id,
-                    FirstName = userDTO.FirstName,
-                    LastName = userDTO.LastName
-                },
-
                 Text = text,
-                Date = DateTime.Now
+                Date = DateTime.Now,
+                UserDtos = users
             };
 
-            chatViewModel.Messages.Add(message);
-            //chatDto.Messages.Add(messageDto);
-            //userService.UpdateChat(chatDto);
+            userService.AddMessage(message);
+            var messagesDto = userService.GetMessages(u1, u2).ToList();
+            var messagesViewModel = Mapper.Map<IEnumerable<MessageDto>, IEnumerable<MessageViewModel>>(messagesDto);
 
-            return PartialView("History", chatViewModel);
+            return PartialView("History", messagesViewModel.ToList());
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@model FinalProject.WEB.Models.ChatViewModel
+@model List<FinalProject.WEB.Models.MessageViewModel>
 @{
     ViewBag.Title = "Chat";
 }
@@ -7,9 +7,9 @@
 <h2>Chat</h2>
 
 <div style="overflow:scroll; height:800px;">
-    @foreach (var message in Model.Messages)
+    @foreach (var message in Model)
     {
-        <p class="text-left" width="40%">@message.User.FirstName: @message.Text</p>
+        <p class="text-left" width="40%">@message.ChatUsers[0].FirstName: @message.Text</p>
     }
 
 </div>

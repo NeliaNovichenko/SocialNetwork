@@ -57,12 +57,12 @@
                     <td colspan="2">
                         @if (Model.Id == User.Identity.GetUserId())
                         {
-                            @Html.ActionLink("Edit Profile", "EditUserProfile", "UserProfile", Model, new {style = "text-transform:capitalize;"})
+                            @Html.ActionLink("Edit Profile", "EditUserProfile", "UserProfile", Model, new { style = "text-transform:capitalize;" })
                         }
                         else
                         {
-                           
-                            <p>@Html.ActionLink("Subscribe", "Subscribe", "UserProfile", Model, null)</p> 
+
+                            <p>@Html.ActionLink("Subscribe", "Subscribe", "UserProfile", Model, null)</p>
                         }
                     </td>
                 </tr>
@@ -70,19 +70,21 @@
         </td>
     </tr>
 </table>
-
 <div align="center">
-    @using (Html.BeginForm("AddNewPost", "UserProfile", FormMethod.Post))
+    @if (Model.Id == User.Identity.GetUserId())
     {
+        using (Html.BeginForm("AddNewPost", "UserProfile", FormMethod.Post))
+        {
 
-        <div class="jumbotron text-left">
-            <p>Share your thoughts with friends:</p>
-            <textarea class="form-control " name="text" aria-valuetext="" style="min-width: 100%" rows="5"></textarea>
-            <button class="btn-sm" type="submit" value="Share">Share</button>
-        </div>
+            <div class="jumbotron text-left">
+                <p>Share your thoughts with friends:</p>
+                <textarea class="form-control " name="text" aria-valuetext="" style="min-width: 100%" rows="5"></textarea>
+                <button class="btn-sm" type="submit" value="Share">Share</button>
+            </div>
+        }
     }
 
-    @if (Model.UserPosts == null)
+    @if (Model.UserPosts == null || Model.UserPosts.Count == 0)
     {
         <div class="jumbotron">
             <p class="text-left">No posts yet.</p>
@@ -100,5 +102,7 @@
     }
 
 </div>
+
+
 
 

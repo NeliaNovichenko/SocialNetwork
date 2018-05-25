@@ -8,8 +8,8 @@ namespace FinalProject.BLL.DTO
 {
     public class MessageDto
     {
-        public string Id { get; set; }
-        public string UserId { get; set; }
+        public int Id { get; set; }
+        public List<ClientProfileDto> UserDtos { get; set; }
         public DateTime? Date { get; set; }
         public string Text { get; set; }
     }

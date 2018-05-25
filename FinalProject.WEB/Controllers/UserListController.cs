@@ -19,7 +19,7 @@ namespace FinalProject.WEB.Controllers
         public ActionResult Index()
         {
             var users = userService.GetAllUsers();
-            var profiles = Mapper.Map<IEnumerable<UserDto>, List<UserProfileViewModel>>(users);
+            var profiles = Mapper.Map<IEnumerable<ClientProfileDto>, List<UserProfileViewModel>>(users);
             return View(profiles);
         }
 

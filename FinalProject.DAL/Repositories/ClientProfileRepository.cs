@@ -34,19 +34,25 @@ namespace FinalProject.DAL.Repositories
 
         public IEnumerable<ClientProfile> Find(Func<ClientProfile, bool> predicate)
         {
-            return _dbSet.AsNoTracking().Include(c => c.Friends).Include(c => c.UserPosts).Where(predicate).ToList();
-            //return _dbSet.Where(predicate).ToList();
+            return _dbSet.AsNoTracking()
+                .Include(c => c.Friends)
+                .Include(c => c.UserPosts)
+                .Include(c => c.Messages)
+                .Where(predicate).ToList();
         }
 
         public ClientProfile Get(int id)
         {
             return _dbSet.Find(id);
-            //return result;
         }
 
         public IEnumerable<ClientProfile> GetAll()
         {
-            var result = _dbSet.AsNoTracking().Include(c => c.Friends).Include(c => c.UserPosts).ToList();
+            var result = _dbSet.AsNoTracking()
+                .Include(c => c.Friends)
+                .Include(c => c.UserPosts)
+                .Include(c => c.Messages)
+                .ToList();
             return result;
         }
 
@@ -55,6 +61,7 @@ namespace FinalProject.DAL.Repositories
             _context.Entry(item).State = EntityState.Modified;
             _context.SaveChanges();
         }
+
 
         private bool disposed = false;
 

@@ -7,11 +7,11 @@ using FinalProject.DAL.Entities;
 
 namespace FinalProject.BLL.DTO
 {
-    public class UserDto
+    public class ClientProfileDto
     {
-        public UserDto()
+        public ClientProfileDto()
         {
-            Friends = new List<UserDto>();
+            Friends = new List<ClientProfileDto>();
             UserPosts =  new List<PostDto>();
         }
         public string Id { get; set; }
@@ -28,7 +28,7 @@ namespace FinalProject.BLL.DTO
 
         public string Gender { get; set; }
 
-        public List<UserDto> Friends { get; set; }
+        public List<ClientProfileDto> Friends { get; set; }
 
         public List<PostDto> UserPosts { get; set; }
     }

@@ -57,10 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\ChatDto.cs" />
     <Compile Include="DTO\MessageDto.cs" />
     <Compile Include="DTO\RegistrationModelDto.cs" />
-    <Compile Include="DTO\UserDto.cs" />
+    <Compile Include="DTO\ClientProfileDto.cs" />
     <Compile Include="DTO\PostDto.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
@@ -80,8 +79,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BusinessModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
